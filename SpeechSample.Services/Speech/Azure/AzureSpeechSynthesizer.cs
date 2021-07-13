@@ -13,7 +13,8 @@ namespace SpeechSample.Services.Speech.Azure
 
         public async Task<SpeechSynthesisResult> SynthesizeAudioAsync(string text)
         {
-            return await _synthesizer.SpeakTextAsync(text);
+            using var result = await _synthesizer.SpeakTextAsync(text);
+            return result;
         }
     }
 }
