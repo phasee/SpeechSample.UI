@@ -28,12 +28,12 @@ namespace SpeechSample.UI
 
             RestaurantEventManager eventManager = new RestaurantEventManager(Chef, Kitchen);
 
-            TriggerEventAsync(eventManager).GetAwaiter().GetResult();
+            Task.Run(async () => await TriggerEventAsync(eventManager));
         }
 
         private async Task TriggerEventAsync(RestaurantEventManager eventManager)
         {
-            await eventManager.TriggerEvent(RestaurantEvent.ORDER_SENT, "Order Received");
+            await eventManager.TriggerEvent(RestaurantEvent.ORDER_SENT, "Order Denied");
         }
     }
 }
